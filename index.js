@@ -20,8 +20,14 @@ app.post('/ask', async (req, res) => {
       }
     );
     const data = await response.json();
-    const reply = data.candidates[0].content.parts[0].text;
-    res.json({ reply });
+    console.log("Gemini response:", JSON.stringify(data));
+    
+    if (data.candidates && data.candidates[0]) {
+      const reply = data.candidates[0].content.parts[0].text;
+      res.json({ reply });
+    } else {
+      res.json({ reply: "Sin respuesta: " + JSON.stringify(data) });
+    }
   } catch (e) {
     res.json({ reply: "Error: " + e.message });
   }
