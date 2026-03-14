@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 app.use(express.json());
 
-const GEMINI_API_KEY = "PON_TU_API_KEY_AQUI";
+const GEMINI_API_KEY = "gen-lang-client-0552796347";
 
 app.post('/ask', async (req, res) => {
   const message = req.body.message;
